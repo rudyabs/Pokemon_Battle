@@ -4,24 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pokemon</title>
+    <title>Pokemon Battle</title>
 </head>
-<body>    
-    <center>
+<body>
+    <form action="http://localhost:5000/" method="POST">    
+        <input type="text" name="name1" placeholder="Pokemon1"/>
+        <br>
+        <p>VS</p>
+        <br>
+        <input type="text" name="name2" placeholder="Pokemon2"/>
         <br><br>
-        <div class="col-50">
-                <div class="container">
-                    <form action="http://localhost:5000/hasil" method="post">
-                    
-                    <p>
-                        <input name="namapokemon1" type="text" placeholder="Pokemon 1..."></p>
-                    <p>
-                        <input name="namapokemon2" type="text" placeholder="Pokemon 2..."></p>
-                    <p>
-                        <input type="submit" value="BATTLE">
-                    </p>
-                    </form>
-                </div>
-            </div>
-</center></body>
+        <input type="Submit" value="Battle 👊"/>
+    </form>
+</body>
 </html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hasil Pertandingan</title>
+</head>
+<body style="text-align:center">
+    <h1>Hasil Pertandingan</h1>
+    <img src="{{gambar1}}" align='middle'/>
+    <p>VS</p>
+    <img src="{{gambar2}}" align='middle'/>
+    <br><br>
+    <img src="{{result['graph']}}" align='middle'/>
+    <h2>{{result['prob']}}% {{result['win']}} WINS!</h2>
+    <form action="http://localhost:5000/", method="GET">
+        <input type="submit" value="Kembali"/>
+    </form>
+</body>
+</html>
