@@ -26,7 +26,8 @@ def home():
     elif request.method == 'POST':
         pokemon1 = request.form['name1']
         pokemon2 = request.form['name2']
-        
+        pokemon1_winner = request.form['name1']
+        pokemon2_winner = request.form['name2']
         if pokemon1 in df_pokemon['Name'].values and pokemon2 in df_pokemon['Name'].values:
             pokemon1 = df_pokemon[df_pokemon['Name']==pokemon1][['Name' ,'HP', 'Attack', 'Defense', 'Sp. Atk', 'Sp. Def', 'Speed', 'Label Type 1']]
             pokemon2 = df_pokemon[df_pokemon['Name']==pokemon2][['Name' ,'HP', 'Attack', 'Defense', 'Sp. Atk', 'Sp. Def', 'Speed', 'Label Type 1']]
@@ -39,22 +40,22 @@ def home():
             plt.close()
             plt.figure(figsize=(12,8))
             plt.subplot(161)
-            plt.bar([compare.iloc[0]['Name'], compare.iloc[1]['Name']], compare['HP'], color=['red', 'blue'])
+            plt.bar([compare.iloc[0]['Name'], compare.iloc[1]['Name']], compare['HP'], color=['green', 'orange'])
             plt.title('HP')
             plt.subplot(162)
-            plt.bar([compare.iloc[0]['Name'], compare.iloc[1]['Name']], compare['Attack'], color=['red', 'blue'])
+            plt.bar([compare.iloc[0]['Name'], compare.iloc[1]['Name']], compare['Attack'], color=['green', 'orange'])
             plt.title('Attack')
             plt.subplot(163)
-            plt.bar([compare.iloc[0]['Name'], compare.iloc[1]['Name']], compare['Defense'], color=['red', 'blue'])
+            plt.bar([compare.iloc[0]['Name'], compare.iloc[1]['Name']], compare['Defense'], color=['green', 'orange'])
             plt.title('Defense')
             plt.subplot(164)
-            plt.bar([compare.iloc[0]['Name'], compare.iloc[1]['Name']], compare['Sp. Atk'], color=['red', 'blue'])
+            plt.bar([compare.iloc[0]['Name'], compare.iloc[1]['Name']], compare['Sp. Atk'], color=['green', 'orange'])
             plt.title('Sp. Attack')
             plt.subplot(165)
-            plt.bar([compare.iloc[0]['Name'], compare.iloc[1]['Name']], compare['Sp. Def'], color=['red', 'blue'])
+            plt.bar([compare.iloc[0]['Name'], compare.iloc[1]['Name']], compare['Sp. Def'], color=['green', 'orange'])
             plt.title('Sp. Defense')
             plt.subplot(166)
-            plt.bar([compare.iloc[0]['Name'], compare.iloc[1]['Name']], compare['Speed'], color=['red', 'blue'])
+            plt.bar([compare.iloc[0]['Name'], compare.iloc[1]['Name']], compare['Speed'], color=['green', 'orange'])
             plt.title('Speed')
             plt.tight_layout()
             
@@ -81,12 +82,12 @@ def home():
 
             if prediction == 1:
                 prob = model.predict_proba(versus)[0][1] * 100
-                win = pokemon1
+                win = pokemon1_winner
                 result = {'prob':prob, 'win':win, 'graph':graph}
                 return render_template('hasil.html', result=result, gambar1=gambar1, gambar2=gambar2)
             else:
                 prob = model.predict_proba(versus)[0][0] * 100
-                win = pokemon2
+                win = pokemon2_winner
                 result = {'prob':prob, 'win':win, 'graph':graph}
                 return render_template('hasil.html', result=result, gambar1=gambar1, gambar2=gambar2)
         else:
@@ -99,3 +100,4 @@ def error(error):
 if __name__ == "__main__":
     model = joblib.load('Model_RFC_Deploy')
     app.run(debug=True)
+

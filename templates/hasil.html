@@ -7,13 +7,21 @@
     <title>Hasil Pertandingan</title>
 </head>
 <body style="text-align:center">
-    <h1>Hasil Pertandingan</h1>
+    <h1>Pokemon Battle Result</h1>
+    <p>
     <img src="{{gambar1}}" align='middle'/>
-    <p>VS</p>
+    VS
     <img src="{{gambar2}}" align='middle'/>
+    </p>
     <br><br>
     <img src="{{result['graph']}}" align='middle'/>
-    <h2>{{result['prob']}}% {{result['win']}} WINS!</h2>
+    <br>
+    <p><b>Probability of Win</b></p>
+    <h2>{{result['prob']}}%</h2>
+    <br> 
+    <h2>{{result['win']}}</h2> 
+    <br>
+    <h2>WINS!</h2>
     <form action="http://localhost:5000/", method="GET">
         <input type="submit" value="Kembali"/>
     </form>
