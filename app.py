@@ -24,8 +24,8 @@ def home():
     if request.method == 'GET':
         return render_template('home.html')
     elif request.method == 'POST':
-        pokemon1 = request.form['name1']
-        pokemon2 = request.form['name2']
+        pokemon1 = request.form['name1'].capitalize()
+        pokemon2 = request.form['name2'].capitalize()
         pokemon1_winner = request.form['name1']
         pokemon2_winner = request.form['name2']
         if pokemon1 in df_pokemon['Name'].values and pokemon2 in df_pokemon['Name'].values:
